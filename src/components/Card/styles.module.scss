@@ -1,0 +1,70 @@
+.container {
+  width: 30rem;
+  height: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 0.8rem;
+  position: relative;
+
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+
+  box-shadow: 10px 10px 31px 0px rgba(0, 0, 0, 0.56);
+}
+
+.face {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.cardFront {
+  border-radius: 0.8rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.8rem;
+  }
+}
+
+.cardBack {
+  width: 100%;
+  height: 100%;
+  background-color: #060e1e;
+  border-radius: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    border: 0.2rem solid #389999;
+    border-radius: 0.8rem;
+    bottom: 2.5rem;
+    top: 2.5rem;
+    left: 2.5rem;
+    right: 2.5rem;
+  }
+
+  span {
+    font-size: 16rem;
+    font-weight: 700;
+    font-family: 'Black Ops One', cursive;
+
+    color: #389999;
+    text-shadow: 0 0 0.125em rgba(0, 0, 0, 0.5), 0 0 0.25em currentColor;
+    box-shadow: inset 0 0 0.5em 0 var(--cor-azul), 0 0 0.5em 0 var(--cor-azul);
+  }
+}
+
+.flip {
+  transform: rotateY(180deg);
+}
