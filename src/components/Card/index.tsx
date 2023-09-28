@@ -1,6 +1,7 @@
-import { CardContent } from '../../App'
-import styles from './styles.module.scss'
+import { CardContent } from '../../pages/Home'
 import { useState } from 'react'
+
+import styles from './styles.module.scss'
 
 interface CardProps {
   data: CardContent
