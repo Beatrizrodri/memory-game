@@ -1,0 +1,41 @@
+.close {
+  display: none;
+}
+
+.container {
+  width: 50rem;
+  height: 45rem;
+  background-color: var(--dark-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 4rem;
+
+  border-radius: 0.8rem;
+  border: 0.5rem solid var(--light-blue);
+
+  position: absolute;
+  z-index: 999;
+
+  span {
+    font-family: 'Popins', sans-serif;
+    font-size: 2.6rem;
+    font-weight: 500;
+    line-height: 2;
+    color: var(--light-blue);
+    margin-bottom: 2rem;
+  }
+
+  button {
+    width: 30rem;
+    height: 5rem;
+
+    font-size: 2rem;
+    border: none;
+    border-radius: 0.8rem;
+
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+  }
+}

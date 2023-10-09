@@ -23,9 +23,9 @@
   .difficult {
     font-size: 1.2rem;
     display: grid;
-    grid-template-columns: repeat(6, 28rem);
-    grid-template-rows: repeat(3, 20rem);
+    grid-template-columns: repeat(6, 26rem);
+    grid-template-rows: repeat(3, 16rem);
     gap: 4rem;
-    row-gap: 11rem;
+    row-gap: 13.5rem;
   }
 }

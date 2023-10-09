@@ -1,9 +1,17 @@
+import { useState } from 'react'
 import { CardBoard } from '../../components/CardBoard'
 import styles from './styles.module.scss'
+import { Menu } from '../../components/Menu'
 
 export interface CardContent {
   name: string
   path: string
+}
+
+export const LEVELS = {
+  EASY: 'EASY',
+  MEDIUM: 'MEDIUM',
+  DIFFICULT: 'DIFFICULT'
 }
 
 const cardsContent: CardContent[] = [
@@ -46,9 +54,27 @@ const cardsContent: CardContent[] = [
 ]
 
 export function Home() {
+  const [selectedLevel, setSelectedLevel] = useState<string>(LEVELS.EASY)
+  const [isMenuOpen, setIsMenuOpen] = useState(true)
+
+  console.log('[selectedLevel]: ', selectedLevel)
+
+  function handleSelectLevel(level: string) {
+    setSelectedLevel(level)
+  }
+
+  function handleToggleIsMenuOpen() {
+    setIsMenuOpen(oldValue => !oldValue)
+  }
+
   return (
     <div className={styles.container}>
-      <CardBoard cardsData={cardsContent} level="DIFFICULT" />
+      <Menu
+        isOpen={isMenuOpen}
+        onLevelChange={handleSelectLevel}
+        onChangeIsOpen={handleToggleIsMenuOpen}
+      />
+      <CardBoard cardsData={cardsContent} level={selectedLevel} />
     </div>
   )
 }

@@ -25,6 +25,8 @@ const levelsData = [
 ]
 
 export function CardBoard({ cardsData, level }: CardBoardProps) {
+  console.log('[level]: ', level)
+
   const currentLevel =
     levelsData.find(item => item.level === level) ?? levelsData[0]
 
@@ -36,7 +38,7 @@ export function CardBoard({ cardsData, level }: CardBoardProps) {
 
   return (
     <div className={`${styles.container}`}>
-      <div className={styles[currentLevel.level.toLowerCase()]}>
+      <div className={styles[level.toLowerCase()]}>
         {cards.map((card, index) => (
           <Card key={index} data={card} />
         ))}
