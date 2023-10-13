@@ -1,0 +1,25 @@
+.container {
+  width: 6cqh;
+  height: 6rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-blue);
+  border-radius: 100%;
+  border: none;
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+
+  cursor: pointer;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.close {
+  display: none;
+}
