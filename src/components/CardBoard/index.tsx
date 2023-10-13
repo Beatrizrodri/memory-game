@@ -25,8 +25,6 @@ const levelsData = [
 ]
 
 export function CardBoard({ cardsData, level }: CardBoardProps) {
-  console.log('[level]: ', level)
-
   const currentLevel =
     levelsData.find(item => item.level === level) ?? levelsData[0]
 

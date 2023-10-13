@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { CardBoard } from '../../components/CardBoard'
 import styles from './styles.module.scss'
 import { Menu } from '../../components/Menu'
-
+import { MenuIcon } from '../../components/MenuIcon'
 export interface CardContent {
   name: string
   path: string
@@ -28,27 +28,27 @@ const cardsContent: CardContent[] = [
     path: './assets/espetinho.jpg'
   },
   {
-    name: 'lamen1',
+    name: 'lamen_1',
     path: './assets/lamen_1.jpg'
   },
   {
-    name: 'lamen2',
+    name: 'lamen_2',
     path: './assets/lamen_2.jpg'
   },
   {
-    name: 'lamen3',
+    name: 'lamen_3',
     path: './assets/lamen_3.jpg'
   },
   {
-    name: 'pasteis1',
+    name: 'pasteis_1',
     path: './assets/pasteis_1.jpg'
   },
   {
-    name: 'pasteis2',
+    name: 'pasteis_2',
     path: './assets/pasteis_2.jpg'
   },
   {
-    name: 'pasteis',
+    name: 'pasteis_3',
     path: './assets/pasteis_3.jpg'
   }
 ]
@@ -56,8 +56,6 @@ const cardsContent: CardContent[] = [
 export function Home() {
   const [selectedLevel, setSelectedLevel] = useState<string>(LEVELS.EASY)
   const [isMenuOpen, setIsMenuOpen] = useState(true)
-
-  console.log('[selectedLevel]: ', selectedLevel)
 
   function handleSelectLevel(level: string) {
     setSelectedLevel(level)
@@ -69,6 +67,10 @@ export function Home() {
 
   return (
     <div className={styles.container}>
+      <MenuIcon
+        isOpen={isMenuOpen}
+        onToggleMenuIsOpen={handleToggleIsMenuOpen}
+      />
       <Menu
         isOpen={isMenuOpen}
         onLevelChange={handleSelectLevel}

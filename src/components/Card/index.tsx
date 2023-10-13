@@ -10,6 +10,15 @@ interface CardProps {
 export function Card({ data }: CardProps) {
   const [isClicked, setIsClicked] = useState(false)
 
+  const [uriImageImportedState, setUriImageImportedState] = useState('')
+
+  const handleImportedImage = async () => {
+    const logo = await import(`../../assets/${data.name}.jpg`)
+    setUriImageImportedState(logo.default)
+  }
+
+  handleImportedImage()
+
   function toggleClicked() {
     setIsClicked(oldValue => !oldValue)
   }
@@ -20,7 +29,7 @@ export function Card({ data }: CardProps) {
       onClick={toggleClicked}
     >
       <div className={`${styles.face} ${styles.cardFront}`}>
-        <img src={data.path} alt="imagem da frente da carta" />
+        <img src={uriImageImportedState} alt="imagem" />
       </div>
       <div className={`${styles.face} ${styles.cardBack}`}>
         <span>?</span>
