@@ -2,15 +2,15 @@ import styles from './styles.module.scss'
 import { AiFillHome } from 'react-icons/ai'
 
 interface data {
-  isOpen: boolean
+  isMenuOpen: boolean
   onToggleMenuIsOpen: () => void
 }
 
-export function MenuIcon({ isOpen, onToggleMenuIsOpen }: data) {
+export function MenuIcon({ isMenuOpen, onToggleMenuIsOpen }: data) {
   return (
     <button
       onClick={() => onToggleMenuIsOpen()}
-      className={isOpen ? styles.close : styles.container}
+      className={isMenuOpen ? styles.close : styles.container}
     >
       <AiFillHome color="389999" className={styles.icon} />
     </button>

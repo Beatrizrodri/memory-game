@@ -5,11 +5,10 @@ import styles from './styles.module.scss'
 
 interface CardProps {
   data: CardContent
+  onClick: (card: CardContent) => void
 }
 
-export function Card({ data }: CardProps) {
-  const [isClicked, setIsClicked] = useState(false)
-
+export function Card({ data, onClick }: CardProps) {
   const [uriImageImportedState, setUriImageImportedState] = useState('')
 
   const handleImportedImage = async () => {
@@ -19,14 +18,16 @@ export function Card({ data }: CardProps) {
 
   handleImportedImage()
 
-  function toggleClicked() {
-    setIsClicked(oldValue => !oldValue)
+  const handleClickCard = () => {
+    if (data.isEnabled) {
+      onClick(data)
+    }
   }
 
   return (
     <div
-      className={`${styles.container} ${isClicked && styles.flip}`}
-      onClick={toggleClicked}
+      className={`${styles.container} ${data.isFlipped && styles.flip}`}
+      onClick={() => handleClickCard()}
     >
       <div className={`${styles.face} ${styles.cardFront}`}>
         <img src={uriImageImportedState} alt="imagem" />
