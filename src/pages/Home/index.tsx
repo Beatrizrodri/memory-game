@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { CardBoard } from '../../components/CardBoard'
-import styles from './styles.module.scss'
 import { Menu } from '../../components/Menu'
 import { MenuIcon } from '../../components/MenuIcon'
+
+import styles from './styles.module.scss'
 export interface CardContent {
   id?: string
   name: string
@@ -90,7 +91,7 @@ export function Home() {
     <div className={styles.container}>
       <MenuIcon
         isMenuOpen={isMenuOpen}
-        onToggleMenuIsOpen={handleToggleIsMenuOpen}
+        onChangeIsOpen={handleToggleIsMenuOpen}
       />
       <Menu
         isOpen={isMenuOpen}
@@ -101,6 +102,7 @@ export function Home() {
         cardsData={cardsContent}
         level={selectedLevel}
         isMenuOpen={isMenuOpen}
+        onChangeIsOpen={handleToggleIsMenuOpen}
       />
     </div>
   )

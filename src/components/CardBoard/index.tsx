@@ -5,11 +5,14 @@ import { Card } from '../Card'
 import { v4 as uuidv4 } from 'uuid'
 
 import styles from './styles.module.scss'
+import { CongratulationsCard } from '../CongratulationsCard'
+import Confetti from 'react-confetti'
 
 interface CardBoardProps {
   cardsData: CardContent[]
   level: 'EASY' | 'MEDIUM' | 'DIFFICULT'
   isMenuOpen: boolean
+  onChangeIsOpen: () => void
 }
 
 const levelsData = [
@@ -27,9 +30,14 @@ const levelsData = [
   }
 ]
 
-export function CardBoard({ cardsData, level, isMenuOpen }: CardBoardProps) {
+export function CardBoard({
+  cardsData,
+  level,
+  isMenuOpen,
+  onChangeIsOpen
+}: CardBoardProps) {
   const [cards, setCards] = useState<CardContent[]>([])
-  const [isGameOver, setIsGameOver] = useState<boolean>(false)
+  const [isGameOver, setIsGameOver] = useState(false)
 
   const generateCards = useCallback(() => {
     const currentLevel =
@@ -91,8 +99,8 @@ export function CardBoard({ cardsData, level, isMenuOpen }: CardBoardProps) {
       card => !card.isEnabled && card.isFlipped
     )
 
-    if (filteredCards.length === cards.length) {
-      setIsGameOver(oldValue => !oldValue)
+    if (filteredCards?.length === cards?.length) {
+      setIsGameOver(true)
     }
   }, [cards])
 
@@ -101,24 +109,34 @@ export function CardBoard({ cardsData, level, isMenuOpen }: CardBoardProps) {
   }, [generateCards])
 
   useEffect(() => {
-    verifyIfGameEnded()
-  }, [verifyIfGameEnded])
+    if (cards?.length !== 0) {
+      verifyIfGameEnded()
+    }
+  }, [cards?.length, verifyIfGameEnded])
+
+  if (isGameOver) {
+    return (
+      <div className={styles.endGame}>
+        <Confetti />
+        <CongratulationsCard
+          isOpen={isMenuOpen}
+          onChangeIsOpen={onChangeIsOpen}
+          isGameOver={isGameOver}
+          setIsGameOver={setIsGameOver}
+        />
+      </div>
+    )
+  }
 
   return (
     <>
-      {!isGameOver ? (
-        <div className={isMenuOpen ? styles.close : styles.container}>
-          <div className={styles[level.toLowerCase()]}>
-            {cards.map((card, index) => (
-              <Card key={index} data={card} onClick={changeCardStatus} />
-            ))}
-          </div>
+      <div className={isMenuOpen ? styles.close : styles.container}>
+        <div className={styles[level.toLowerCase()]}>
+          {cards.map((card, index) => (
+            <Card key={index} data={card} onClick={changeCardStatus} />
+          ))}
         </div>
-      ) : (
-        <div>
-          <span>o jogo acabou</span>
-        </div>
-      )}
+      </div>
     </>
   )
 }

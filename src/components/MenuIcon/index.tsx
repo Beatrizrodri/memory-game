@@ -3,13 +3,13 @@ import { AiFillHome } from 'react-icons/ai'
 
 interface data {
   isMenuOpen: boolean
-  onToggleMenuIsOpen: () => void
+  onChangeIsOpen: () => void
 }
 
-export function MenuIcon({ isMenuOpen, onToggleMenuIsOpen }: data) {
+export function MenuIcon({ isMenuOpen, onChangeIsOpen }: data) {
   return (
     <button
-      onClick={() => onToggleMenuIsOpen()}
+      onClick={() => onChangeIsOpen()}
       className={isMenuOpen ? styles.close : styles.container}
     >
       <AiFillHome color="389999" className={styles.icon} />

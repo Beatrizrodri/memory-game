@@ -7,29 +7,35 @@
   height: 100%;
   display: flex;
   justify-content: center;
+}
 
-  .easy {
-    display: grid;
-    grid-template-columns: repeat(4, 40rem);
-    grid-template-rows: repeat(2, 40rem);
-    gap: 4rem;
-  }
+.easy {
+  display: grid;
+  grid-template-columns: repeat(4, 40rem);
+  grid-template-rows: repeat(2, 40rem);
+  gap: 4rem;
+}
 
-  .medium {
-    display: grid;
-    padding-top: 12rem;
-    grid-template-columns: repeat(6, 28rem);
-    grid-template-rows: repeat(2, 28rem);
-    gap: 4rem;
-    row-gap: 10rem;
-  }
+.medium {
+  display: grid;
+  padding-top: 12rem;
+  grid-template-columns: repeat(6, 28rem);
+  grid-template-rows: repeat(2, 28rem);
+  gap: 4rem;
+  row-gap: 10rem;
+}
 
-  .difficult {
-    font-size: 1.2rem;
-    display: grid;
-    grid-template-columns: repeat(6, 26rem);
-    grid-template-rows: repeat(3, 16rem);
-    gap: 4rem;
-    row-gap: 13.5rem;
-  }
+.difficult {
+  font-size: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(6, 26rem);
+  grid-template-rows: repeat(3, 16rem);
+  gap: 4rem;
+  row-gap: 13.5rem;
+}
+
+.endGame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
